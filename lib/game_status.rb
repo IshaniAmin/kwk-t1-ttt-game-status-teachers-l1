@@ -18,3 +18,22 @@ def won?(board)
     end
   end
 end
+
+def full?(board)
+  ind = [0,1,2,3,4,5,6,7,8]
+  ind.all? {|i| position_taken?(board, i)}
+end
+
+def draw?(board)
+  !won?(board) && full?(board)
+end
+
+def over?(board)
+  won?(board) || full?(board) || draw?(board)
+end
+
+def winner(board)
+  if won?(board)
+    $win == "X" ? "X" : "O"
+  end
+end
