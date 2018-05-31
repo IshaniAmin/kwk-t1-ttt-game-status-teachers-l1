@@ -10,6 +10,11 @@ WIN_COMBINATIONS = [
   [0,4,8], [2,4,6]
   ]
 
-def won(board)
-  
-end
+  def won?(board)
+    WIN_COMBINATIONS.find do |comb|
+      if position_taken?(board,comb[0])
+        $win = board[comb[0]]
+        comb.all? {|ind| board[ind] == $win}
+      end
+    end
+  end
